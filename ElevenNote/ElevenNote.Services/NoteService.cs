@@ -99,6 +99,22 @@ namespace ElevenNote.Services
         }
 
 
+        //(((4.12)))
+        public bool DeleteNote(int noteId)  //this is our service method for Delete method in our controller
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                ctx
+                    .Notes
+                    .Single(e => e.NoteId == noteId && e.OwnerId == _userId);
+
+                ctx.Notes.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
 
     }
 }

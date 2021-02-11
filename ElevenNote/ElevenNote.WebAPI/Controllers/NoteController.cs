@@ -65,5 +65,19 @@ namespace ElevenNote.WebAPI.Controllers
             return Ok();
         }
 
+
+        //(((4.12)))  DELETE method.   Our corresponding service method can be found in NoteService.cs
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateNoteService();
+
+            if (!service.DeleteNote(id))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+
+
     }
 }
