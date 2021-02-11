@@ -39,7 +39,7 @@ namespace ElevenNote.Services
             }
         }
 
-        public IEnumerable<NoteListItem> GetNotes()    //"This method will allow us to see all the  notes that belong to a specific user." (((4.02)))
+        public IEnumerable<NoteListItem> GetNotes()    //"This method will allow us to see all the notes that belong to a specific user." (((4.02)))
         {
             using (var ctx = new ApplicationDbContext())
             {
