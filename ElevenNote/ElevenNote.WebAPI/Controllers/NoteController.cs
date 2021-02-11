@@ -39,7 +39,16 @@ namespace ElevenNote.WebAPI.Controllers
 
             return Ok();
         }
+        
 
+        //(((4.08)))
+        //"Next we'll make our GetById [controller] method."
+        public IHttpActionResult Get(int id)  //refer to NoteService for the corresponding service method
+        {
+            NoteService noteService = CreateNoteService();
+            var note = noteService.GetNoteById(id);  //<--- here we call the service method
+            return Ok(note);
+        }
 
     }
 }
