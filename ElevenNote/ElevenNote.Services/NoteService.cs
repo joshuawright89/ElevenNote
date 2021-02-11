@@ -80,6 +80,23 @@ namespace ElevenNote.Services
             }
         }
 
+        //(((4.10)))
+        public bool UpdateNote(NoteEdit model)   //...returns a bool based on if the NoteId is in the database AND the note belongs to a specific _userId:"  This is our SERVICE method for NoteEdit model (located in .Models)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Notes
+                    .Single(e => e.NoteId == model.NoteId && e.OwnerId == _userId);  //should be one note with a matching NoteId AND created by the same user
+
+                entity.Title = model.Title;
+                entity.Content = model.Content;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
 
 
